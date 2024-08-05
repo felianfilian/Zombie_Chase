@@ -36,10 +36,15 @@ public class PlayerController : MonoBehaviour
         Animate();
     }
 
+    private void FixedUpdate()
+    {
+        Jump();
+    }
+
     void PlayerMove()
     {
         moveX = Input.GetAxisRaw("Horizontal");
-        transform.position += new Vector3(moveX, 0f, 0f) * moveSpeed * Time.deltaTime;
+        transform.position += new Vector3(moveX, 0f,0f) * moveSpeed * Time.deltaTime;
     }
 
     void Animate()
@@ -56,5 +61,13 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("moveX", false);
         }
         
+    }
+
+    void Jump()
+    {
+        if(Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
     }
 }
