@@ -44,4 +44,9 @@ public class PlayerController : MonoBehaviour
         moveX = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(moveX, 0f, 0f) * moveSpeed * Time.deltaTime;
     }
+
+    void Animate()
+    {
+
+    }
 }
