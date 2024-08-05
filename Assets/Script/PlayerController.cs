@@ -16,11 +16,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
 
-    private string WALK_ANIM = "walk";
-
-
-
-    void Awake()
+     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -37,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        Animate();
     }
 
     void PlayerMove()
@@ -47,6 +44,6 @@ public class PlayerController : MonoBehaviour
 
     void Animate()
     {
-
+        anim.SetFloat("moveX", Mathf.Abs(moveX));
     }
 }
