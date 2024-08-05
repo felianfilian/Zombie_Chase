@@ -44,6 +44,17 @@ public class PlayerController : MonoBehaviour
 
     void Animate()
     {
-        anim.SetFloat("moveX", Mathf.Abs(moveX));
+        // move
+        if (moveX > 0)
+        {
+            anim.SetBool("moveX", true);
+        } else if(moveX < 0)
+        {
+            anim.SetBool("moveX", true);
+        } else
+        {
+            anim.SetBool("moveX", false);
+        }
+        
     }
 }
