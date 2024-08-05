@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 10f;
     [SerializeField]
-    private float jumpForce = 11f;
+    private float jumpForce = 30f;
 
     private float moveX;
 
@@ -33,13 +33,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        Jump();
         Animate();
+        
     }
 
-    private void FixedUpdate()
-    {
-        Jump();
-    }
 
     void PlayerMove()
     {
