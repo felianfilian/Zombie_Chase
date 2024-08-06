@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 30f;
 
     private float moveX;
+    private bool isGrounded = true;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -63,9 +64,10 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);           
+            isGrounded = false;
         }
     }
 }
