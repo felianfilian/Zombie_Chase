@@ -13,15 +13,14 @@ public class CameraController : MonoBehaviour
 
     private float camHeight;
     private float camWidth;
-    private float camHalfHeight;
-    private float camHalfWidth;
+  
 
 
     void Start()
     {
         camHeight = Camera.main.orthographicSize;
         camWidth = camHeight * Camera.main.aspect;
-        camHalfWidth = camWidth / 2;
+       
     }
 
     // Update is called once per frame
