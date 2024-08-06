@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
 
+    private string ANIMATION_WALK = "walk";
+    private string TAG_GROUND = "Ground";
+
      void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,13 +54,13 @@ public class PlayerController : MonoBehaviour
         // move
         if (moveX > 0)
         {
-            anim.SetBool("moveX", true);
+            anim.SetBool(ANIMATION_WALK, true);
         } else if(moveX < 0)
         {
-            anim.SetBool("moveX", true);
+            anim.SetBool(ANIMATION_WALK, true);
         } else
         {
-            anim.SetBool("moveX", false);
+            anim.SetBool(ANIMATION_WALK, false);
         }
         
     }
@@ -68,6 +71,14 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);           
             isGrounded = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag(TAG_GROUND))
+        {
+            isGrounded = true;
         }
     }
 }
