@@ -6,13 +6,22 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     public bool walkRight;
+    public float speed = 3f;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
 
+        if (walkRight)
+        {
+            transform.localScale = Vector3.one;
+        } else
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     // Update is called once per frame
@@ -20,7 +29,11 @@ public class EnemyController : MonoBehaviour
     {
         if (walkRight)
         {
-            rb.velocity = new Vector3(10f,0f,0f);
+            rb.velocity = new Vector3(speed,0f,0f);
+            
+        } else
+        {
+            rb.velocity = new Vector3(-speed, 0f, 0f);
         }
     }
 }
